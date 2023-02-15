@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calculator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,6 +46,9 @@
                                                         <state key="normal" title="0%">
                                                             <color key="titleColor" red="0.30980393290000002" green="0.6784313917" blue="0.44313728810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DGt-XK-gmT"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp9-PC-qRM">
                                                         <rect key="frame" x="95.333333333333329" y="0.0" width="156.66666666666669" height="54"/>
@@ -59,6 +62,9 @@
                                                         <state key="normal" title="10%">
                                                             <color key="titleColor" red="0.30980393290000002" green="0.6784313917" blue="0.44313728810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1rH-Kj-V6T"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-sz-ahg">
                                                         <rect key="frame" x="252" y="0.0" width="101" height="54"/>
@@ -72,6 +78,9 @@
                                                         <state key="normal" title="20%">
                                                             <color key="titleColor" red="0.30980393290000002" green="0.6784313917" blue="0.44313728810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vat-Ti-gAG"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -100,12 +109,15 @@
                                                         <color key="textColor" red="0.30980392156862746" green="0.67843137254901964" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZXG-VG-t0n">
+                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZXG-VG-t0n">
                                                         <rect key="frame" x="120" y="0.0" width="94" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="29" id="G00-CJ-Fyf"/>
                                                             <constraint firstAttribute="width" constant="94" id="y2L-FS-anM"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vbB-CX-lCv"/>
+                                                        </connections>
                                                     </stepper>
                                                 </subviews>
                                             </stackView>
@@ -168,6 +180,10 @@
                                 <state key="normal" title="Calculate">
                                     <color key="titleColor" red="0.97254901960784312" green="1" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="calculatePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zRP-la-ZD0"/>
+                                    <segue destination="8tr-y2-UKx" kind="presentation" identifier="goToResult" id="hIm-0o-WLR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -184,17 +200,24 @@
                             <constraint firstItem="tby-or-a0y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zeD-sb-bVP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="billTextField" destination="xlI-u5-1dK" id="6ql-XG-KDl"/>
+                        <outlet property="splitNumberLabel" destination="cdS-Qc-akB" id="Jkl-R0-Ji8"/>
+                        <outlet property="tenPctButton" destination="Qp9-PC-qRM" id="rNd-O2-lLj"/>
+                        <outlet property="twentyPctButton" destination="Nt1-sz-ahg" id="HgN-pG-kOv"/>
+                        <outlet property="zeroPctButton" destination="Wj0-bU-9jZ" id="lSP-7c-xmp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.64122137404578" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Results View Controller-->
         <scene sceneID="ZXF-Ba-cAi">
             <objects>
-                <viewController id="8tr-y2-UKx" sceneMemberID="viewController">
+                <viewController id="8tr-y2-UKx" customClass="ResultsViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rQb-hd-5rF">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVc-l8-XvO" userLabel="Top View">
@@ -240,7 +263,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7s-11-mbf">
-                                <rect key="frame" x="96.666666666666686" y="764" width="200" height="54"/>
+                                <rect key="frame" x="96.666666666666686" y="729" width="200" height="54"/>
                                 <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="0wj-vm-JMq"/>
@@ -253,6 +276,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="recalculatePressed:" destination="8tr-y2-UKx" eventType="touchUpInside" id="kfu-1G-6XY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xeb-3F-NSf"/>
@@ -268,6 +294,10 @@
                             <constraint firstItem="sVc-l8-XvO" firstAttribute="leading" secondItem="rQb-hd-5rF" secondAttribute="leading" id="w8g-eY-xJR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="settingsLabel" destination="eIv-8Q-eTD" id="1EU-Cr-R0W"/>
+                        <outlet property="totalLabel" destination="JdK-pv-5bX" id="zDZ-JG-TYC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgw-JR-Ixj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
